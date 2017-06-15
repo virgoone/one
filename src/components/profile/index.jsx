@@ -1,4 +1,8 @@
-import { h, Component } from 'preact';
+'use strict';
+import {
+  h,
+  Component,
+} from 'lib/preact';
 import style from './style.scss';
 
 export default class Profile extends Component {

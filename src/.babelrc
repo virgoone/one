@@ -5,6 +5,8 @@
     "stage-0"
   ],
   "plugins": [
+    "lodash",
+		"syntax-dynamic-import",
     ["transform-decorators-legacy"],
     ["transform-react-jsx", { "pragma": "h" }]
   ]
