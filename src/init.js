@@ -10,13 +10,13 @@ import * as storage from 'lib/_storage';
 import * as browser from 'lib/_browser';
 
 if (!window.__ONE_LIB__) {
-	// const isDebug = config.debug;
-	// if (config.version === 'local') {
-	// 	debug.enable();
-	// }
+	const isDebug = config.debug;
+	if (config.version === 'local') {
+		debug.enable();
+	}
 	Object.defineProperty(window, '__ONE_LIB__', {
 		value: {
-      config,
+      config: { ...config, debug: isDebug },
 			preact,
 			debug,
 			polyfills,
