@@ -1,5 +1,9 @@
-import { h, Component } from 'preact';
-import { Link } from 'preact-router';
+'use strict';
+import {
+  h,
+  Component,
+} from 'lib/preact';
+import { Link } from 'lib/router';
 import style from './style.scss';
 
 export default class Header extends Component {
