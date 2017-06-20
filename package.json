@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "Base64": "^1.0.1",
+    "animejs": "^2.0.2",
     "arale-qrcode": "^3.0.5",
     "autoprefixer": "^7.0.1",
     "babel": "^6.5.2",
@@ -64,6 +65,7 @@
     "cross-env": "^4.0.0",
     "css-loader": "^0.28.0",
     "debug": "^2.6.8",
+    "detector": "^2.5.0",
     "eslint": "^3.19.0",
     "eslint-plugin-jest": "^20.0.0",
     "eslint-plugin-react": "^7.0.0",

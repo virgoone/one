@@ -5,6 +5,7 @@ import { Router } from 'lib/router';
 import Header from './header';
 import Home from './home';
 import Profile from './profile';
+import Canvas from './canvas';
 
 export default class App extends Component {
 	/** Gets fired when the route changes.
@@ -17,7 +18,8 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div id="app">
+			<div id="app" className='koya-one'>
+				<Canvas/>
 				<Header />
 				<Router onChange={this.handleRoute}>
 					<Home path="/" />

@@ -1432,6 +1432,10 @@ colormin@^1.0.5:
     css-color-names "0.0.4"
     has "^1.0.1"
 
+colors@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-0.6.2.tgz#2423fe6678ac0c5dae8852e5d0e5be08c997abcc"
+
 colors@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
@@ -1447,6 +1451,12 @@ commander@2.9.x, commander@~2.9.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.9.0.tgz#9c99094176e12240cb22d6c5146098400fe0f7d4"
   dependencies:
     graceful-readlink ">= 1.0.0"
+
+commander@~1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-1.1.1.tgz#50d1651868ae60eccff0a2d9f34595376bc6b041"
+  dependencies:
+    keypress "0.1.x"
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -1879,6 +1889,13 @@ detect-port@1.2.0:
   dependencies:
     address "^1.0.1"
     debug "^2.6.0"
+
+detector@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/detector/-/detector-2.5.0.tgz#7ecbe84cd667c1cbe19fc74f4e516dcc8bde4f6d"
+  dependencies:
+    colors "0.6.2"
+    commander "~1.1.1"
 
 diff@^3.1.0, diff@^3.2.0:
   version "3.2.0"
@@ -3605,6 +3622,10 @@ jsprim@^1.2.2:
 jsx-ast-utils@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-1.4.1.tgz#3867213e8dd79bf1e8f2300c0cfc1efb182c0df1"
+
+keypress@0.1.x:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/keypress/-/keypress-0.1.0.tgz#4a3188d4291b66b4f65edb99f806aa9ae293592a"
 
 kind-of@^2.0.1:
   version "2.0.1"
