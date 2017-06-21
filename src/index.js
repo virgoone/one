@@ -17,7 +17,7 @@ class OneHub {
 		// in development, set up HMR:
 		if (module.hot) {
 			require('preact/devtools'); // turn this on if you want to enable React DevTools!
-			module.hot.accept('./components/app', () => requestAnimationFrame(App));
+			module.hot.accept('./pages/app', () => requestAnimationFrame(App));
 		}
 		return root;
 	}

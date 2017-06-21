@@ -1,11 +1,11 @@
-
+'use strict';
 import { h, Component } from 'lib/preact';
 import { Router } from 'lib/router';
 
-import Header from './header';
-import Home from './home';
-import Profile from './profile';
-import Canvas from './canvas';
+import Header from 'pages/header';
+import Home from 'pages/home';
+import Profile from 'pages/profile';
+import Canvas from 'components/canvas';
 
 export default class App extends Component {
 	/** Gets fired when the route changes.

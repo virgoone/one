@@ -5,7 +5,7 @@ import './style';
 
 let root;
 const init = () => {
-	let App = require('./components/app').default;
+	let App = require('./pages/app').default;
 	root = render(<App />, document.body, root);
   return root;
 };

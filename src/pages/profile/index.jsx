@@ -3,8 +3,7 @@ import {
 	h,
 	Component,
 } from 'lib/preact';
-import style from './style.scss';
-
+import styles from './style.scss';
 export default class Profile extends Component {
 	state = {
 		count: 0,
@@ -34,7 +33,7 @@ export default class Profile extends Component {
 	// Note: `user` comes from the URL, courtesy of our router
 	render({ user }, { time, count }) {
 		return (
-			<div class={style.profile}>
+			<div className={styles.profile}>
 				<h1>Profile: {user}</h1>
 				<p>This is the user profile for a user named {user}.</p>
 

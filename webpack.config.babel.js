@@ -39,6 +39,7 @@ module.exports = {
 		path: path.resolve(__dirname, 'build'),
 		publicPath: '/',
 		filename: 'bundle.js',
+		chunkFilename: '[name].[chunkhash].chunk.js',
 	},
 
 	resolve: {
@@ -50,6 +51,7 @@ module.exports = {
 		],
 		alias: {
 			components: path.resolve(__dirname, 'src/components'), // used for tests
+			pages: path.resolve(__dirname, 'src/pages'),
 			style: path.resolve(__dirname, 'src/style'),
 			lib: path.resolve(__dirname, 'src/_lib'),
 			src: path.resolve(__dirname, 'src'),
@@ -76,7 +78,7 @@ module.exports = {
 					fallback: 'style-loader',
 					use: [{
 							loader: 'css-loader',
-							options: { modules: true, sourceMap: CSS_MAPS, importLoaders: 1, localIdentName: '[local]__[hash:base64:5]' },
+							options: { modules: true, sourceMap: CSS_MAPS, importLoaders: 2 },
 						},
 						{
 							loader: 'postcss-loader',

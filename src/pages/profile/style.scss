@@ -1,0 +1,9 @@
+:local {
+	@import '~style/helpers';
+	.profile {
+		padding: 56px 20px;
+		min-height: 100%;
+		width: 100%;
+		background: $jiangzi;
+	}
+}
