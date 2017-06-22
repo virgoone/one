@@ -5,7 +5,6 @@ import {
 } from 'lib/preact';
 import { Link } from 'lib/router';
 import styles from './header.scss';
-console.log(styles);
 
 export default class Header extends Component {
 	render() {

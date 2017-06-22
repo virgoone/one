@@ -84,7 +84,6 @@ export default class Canvas extends Component {
 		return p;
 	}
 	animateParticules = (x, y) => {
-		this.logger.i(x, y);
 		const numberOfParticules = Number(location.href.split('?')[1]) || 40;
 		const circle = this.createCircle(x, y);
 		const particules = [];
