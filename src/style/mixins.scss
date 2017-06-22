@@ -114,7 +114,7 @@
 	background-image: -moz-linear-gradient(top, $startColor, $endColor);
 	background-image: -ms-linear-gradient(top, $startColor, $endColor);
 	background-image: -o-linear-gradient(top, $startColor, $endColor);
-	background-image: linear-gradient(top, $startColor, $endColor);
+	background-image: linear-gradient(to right, $startColor, $endColor);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
 }
 

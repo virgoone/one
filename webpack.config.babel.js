@@ -73,19 +73,19 @@ module.exports = {
 			{
 				// Transform our own .(less|css) files with PostCSS and CSS-modules
 				test: /\.(scss|css)$/,
-				include: [path.resolve(__dirname, 'src/components')],
+				include: [path.resolve(__dirname, 'src')],
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [{
 							loader: 'css-loader',
-							options: { modules: true, sourceMap: CSS_MAPS, importLoaders: 2 },
+							options: { modules: true, sourceMap: CSS_MAPS, importLoaders: 1, localIdentName: '[local]__[hash:base64:5]' },
 						},
 						{
 							loader: 'postcss-loader',
 							options: {
 								sourceMap: CSS_MAPS,
-								plugins: () => {
-									autoprefixer({ browsers: ['last 2 versions'] });
+								config: {
+									path: __dirname + '/postcss.config.js',
 								},
 							},
 						},
@@ -98,20 +98,17 @@ module.exports = {
 			},
 			{
 				test: /\.(scss|css)$/,
-				exclude: [path.resolve(__dirname, 'src/components')],
+				exclude: [path.resolve(__dirname, 'src')],
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [{
 							loader: 'css-loader',
-							options: { sourceMap: CSS_MAPS, importLoaders: 1 },
+							options: { sourceMap: CSS_MAPS },
 						},
 						{
 							loader: 'postcss-loader',
 							options: {
 								sourceMap: CSS_MAPS,
-								plugins: () => {
-									autoprefixer({ browsers: ['last 2 versions'] });
-								},
 							},
 						},
 						{
@@ -151,7 +148,10 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: './index.ejs',
-			minify: { collapseWhitespace: true },
+			minify: {
+				collapseWhitespace: true,
+				removeComments: true,
+			},
 		}),
 		new CopyWebpackPlugin([
 			{ from: './manifest.json', to: './' },

@@ -18,7 +18,7 @@
     "webpack"
   ],
   "license": "MIT",
-  "author": "Koya <,e@virgo.one>",
+  "author": "Koya <me@virgo.one>",
   "jest": {
     "setupFiles": [
       "./test/setup.js"
@@ -42,7 +42,6 @@
     ]
   },
   "devDependencies": {
-    "Base64": "^1.0.1",
     "animejs": "^2.0.2",
     "arale-qrcode": "^3.0.5",
     "autoprefixer": "^7.0.1",
