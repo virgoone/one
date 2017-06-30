@@ -1,18 +1,32 @@
 'use strict';
 import {
-  h,
-  Component,
+	h,
+	Component,
 } from 'lib/preact';
 import styles from './style.scss';
-import Tooltip from 'components/tooltip';
+import { HamalFx } from 'components/anime';
 
 export default class Home extends Component {
 	render() {
 		return (
 			<div className={styles.home}>
-				<h1>Home</h1>
-				<Tooltip data-position="top-right"><span>测试</span></Tooltip>
-				<p>This is the Home component.sdf</p>
+				<div className='content'>
+					<div className="grid">
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+					</div>
+				</div>
+
 			</div>
 		);
 	}

@@ -1,2 +1,22 @@
 @import 'helpers';
 @import 'reset';
+:global {
+	.content {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		padding: 4em 0;
+	}
+	.grid {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 0 3em;
+		perspective: 800px;
+		perspective-origin: 50% 100%;
+	}
+}
