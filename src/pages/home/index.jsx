@@ -24,6 +24,30 @@ export default class Home extends Component {
 						<HamalFx>
 							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
 						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
+						<HamalFx>
+							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
+						</HamalFx>
 					</div>
 				</div>
 
