@@ -3,8 +3,10 @@ export default {
 
 
 	/* eslint-disable */
-	serviceType: { alias: 'LiveOS', value: 3 },
+	serviceType: { alias: 'OneHUb', value: 3 },
 
-	trackCategory: {
+	loading: {
+		enable: true,
+		img: 'https://sdkcdn.videojj.com/liveos-sdk/static/loading.gif',
 	},
 }

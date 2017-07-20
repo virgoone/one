@@ -1,3 +1,4 @@
+@import 'flex.mixins';
 @mixin css3-prefix($property, $value) {
 	-webkit-#{$property}: #{$value};
 	-moz-#{$property}: #{$value};
@@ -114,7 +115,7 @@
 	background-image: -moz-linear-gradient(top, $startColor, $endColor);
 	background-image: -ms-linear-gradient(top, $startColor, $endColor);
 	background-image: -o-linear-gradient(top, $startColor, $endColor);
-	background-image: linear-gradient(to right, $startColor, $endColor);
+	background-image: linear-gradient(to top, $startColor, $endColor);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
 }
 
@@ -367,4 +368,15 @@
 	white-space: normal;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
+}
+
+@mixin font-face ($family, $src, $style: normal, $weight: normal) {
+	font-family: $family;
+	src: url('#{$src}.eot'); // IE9 compat
+	src: url('#{$src}.eot?#iefix') format('embedded-opentype'), // IE8 and below
+	url('#{$src}.woff') format('woff'), // standards
+	url('#{$src}.ttf') format('truetype'), // Safari, Android, iOS
+	url('#{$src}.svg##{$family}') format('svg'); // legacy iOS
+	font-style: $style;
+	font-weight: $weight;
 }

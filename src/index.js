@@ -2,24 +2,58 @@
 
 import init from 'src/init';
 init('project');
-import App from './app';
+import './style';
+import { h5, injectTapEventPlugin } from 'lib/browser';
+import { groupStartLog, groupEndLog, uid, getElement, setRelateveStyle } from 'lib/helper';
+import * as renderer from './renderer';
+import config from 'lib/config';
+
 class OneHub {
-	constructor() {
-		return this.start();
+	constructor(containerId) {
+		this.__containerId = containerId;
 	}
+
 	start() {
-		let root = App();
+		if (this.loaded) {
+			throw new Error('请不要重复启动OneHub');
+		}
+		if (config.debug) groupStartLog('ONE HUN START');
+
+		injectTapEventPlugin();
+		this.flexible = h5.init();
+		this.config = config;
+		this.renderer = renderer;
+		this.$container = this.getContainer(this.__containerId);
+		this.rootId = `${config.name}-${uid()}`;
 		// register ServiceWorker via OfflinePlugin, for prod only:
 		if (process.env.NODE_ENV === 'production') {
 			require('./pwa');
 		}
-
-		// in development, set up HMR:
-		if (module.hot) {
-			require('preact/devtools'); // turn this on if you want to enable React DevTools!
-			module.hot.accept('./pages/app', () => requestAnimationFrame(App));
+		this.bootstrap();
+		if (config.debug) groupEndLog('ONE HUN END');
+	}
+	bootstrap() {
+		if (!this.loaded) {
+			return Promise.reject('Destroyed');
 		}
-		return root;
+		this.renderer.start(this);
+		return Promise.resolve('Done');
+	}
+	getContainer(containerId) {
+		const container = getElement(containerId);
+		setRelateveStyle(container);
+		if (!container) {
+			throw new Error(`[AssertError] ${containerId}容器未找到`);
+		}
+		return container;
+	}
+	get version() {
+		return config.version;
+	}
+	get loaded() {
+		return Boolean(this.rootId);
 	}
 }
-window.__ONE_HUB__ = new OneHub();
+const __ONE_HUB__ = new OneHub(document.body);
+__ONE_HUB__.start();
+window.__ONE_HUB__ = __ONE_HUB__;
