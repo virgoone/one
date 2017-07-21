@@ -3,7 +3,6 @@
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import autoprefixer from 'autoprefixer';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ReplacePlugin from 'replace-bundle-webpack-plugin';
 import OfflinePlugin from 'offline-plugin';
@@ -29,7 +28,7 @@ Object.assign(initConfig, {
 	name,
 });
 
-const CSS_MAPS = ENV !== 'production';
+const CSS_MAPS = false;
 
 module.exports = {
 	context: path.resolve(__dirname, 'src'),
@@ -43,18 +42,19 @@ module.exports = {
 	},
 
 	resolve: {
-		extensions: ['.jsx', '.js', '.json', '.scss'],
+		extensions: ['.jsx', '.js', '.json', '.scss', '.css'],
 		modules: [
 			path.resolve(__dirname, 'src/lib'),
 			path.resolve(__dirname, 'node_modules'),
 			'node_modules',
 		],
 		alias: {
-			components: path.resolve(__dirname, 'src/components'), // used for tests
-			pages: path.resolve(__dirname, 'src/pages'),
-			style: path.resolve(__dirname, 'src/style'),
-			lib: path.resolve(__dirname, 'src/_lib'),
-			src: path.resolve(__dirname, 'src'),
+			'components': path.resolve(__dirname, 'src/components'), // used for tests
+			'pages': path.resolve(__dirname, 'src/pages'),
+			'style': path.resolve(__dirname, 'src/style'),
+			'lib': path.resolve(__dirname, 'src/_lib'),
+			'src': path.resolve(__dirname, 'src'),
+			'preact': path.resolve(__dirname + '/node_modules', 'preact/dist/preact.js'),
 		},
 	},
 
@@ -78,7 +78,7 @@ module.exports = {
 					fallback: 'style-loader',
 					use: [{
 							loader: 'css-loader',
-							options: { modules: true, sourceMap: CSS_MAPS, importLoaders: 1, localIdentName: '[local]__[hash:base64:5]' },
+							options: { modules: true, minimize: ENV === 'production', sourceMap: CSS_MAPS, importLoaders: 2, localIdentName: '[local]__[hash:base64:5]' },
 						},
 						{
 							loader: 'postcss-loader',
@@ -109,6 +109,9 @@ module.exports = {
 							loader: 'postcss-loader',
 							options: {
 								sourceMap: CSS_MAPS,
+								config: {
+									path: __dirname + '/postcss.config.js',
+								},
 							},
 						},
 						{
@@ -221,7 +224,7 @@ module.exports = {
 		setImmediate: false,
 	},
 
-	devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
+	devtool: 'false',
 
 	devServer: {
 		port: process.env.PORT || 8080,
@@ -229,7 +232,6 @@ module.exports = {
 		publicPath: '/',
 		contentBase: './src',
 		historyApiFallback: true,
-		open: true,
 		disableHostCheck: true,
 		proxy: {
 			// OPTIONAL: proxy configuration:

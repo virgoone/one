@@ -1,8 +1,8 @@
 'use strict';
 
 import init from 'src/init';
-init('project');
-import './style';
+init('Project');
+
 import { h5, injectTapEventPlugin } from 'lib/browser';
 import { groupStartLog, groupEndLog, uid, getElement, setRelateveStyle } from 'lib/helper';
 import * as renderer from './renderer';
@@ -17,7 +17,7 @@ class OneHub {
 		if (this.loaded) {
 			throw new Error('请不要重复启动OneHub');
 		}
-		if (config.debug) groupStartLog('ONE HUN START');
+		if (config.debug) groupStartLog('ONE HUB START');
 
 		injectTapEventPlugin();
 		this.flexible = h5.init();
@@ -30,7 +30,7 @@ class OneHub {
 			require('./pwa');
 		}
 		this.bootstrap();
-		if (config.debug) groupEndLog('ONE HUN END');
+		if (config.debug) groupEndLog('ONE HUB END');
 	}
 	bootstrap() {
 		if (!this.loaded) {

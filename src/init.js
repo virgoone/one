@@ -37,5 +37,5 @@ export default (name, log = true) => {
 
 	const { version, date } = config;
 
-	console.log(`%c🚀 One Hub ${name.toUpperCase()}@${version} 🚀start at ${new Date(date).toLocaleString()}`, "font-family:'futura', helvetica;font-size:18px;");
+	console.log(`%c🚀 One Hub ${name}@${version} 🚀start at ${new Date(date).toLocaleString()}`, "font-family:'futura', helvetica;font-size:18px;");
 };

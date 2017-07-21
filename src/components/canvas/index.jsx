@@ -13,6 +13,8 @@ export default class Canvas extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.human = false;
+		const { flexible } = context;
+		this.dpr = flexible.dpr > 2 ? 1 : 2;
 	}
 	componentDidMount() {
 		this.ctx = this.$canvas.getContext('2d');
@@ -31,7 +33,7 @@ export default class Canvas extends Component {
 			this.human = true;
 			render.play();
 			const { pointerX, pointerY } = this.updateCoords(e);
-			this.animateParticules(pointerX * 2, pointerY * 2);
+			this.animateParticules(pointerX * this.dpr, pointerY * this.dpr);
 		}, false);
 		setTimeout(this.onResize);
 		this.setState({
@@ -129,12 +131,13 @@ export default class Canvas extends Component {
 		};
 	}
 	onResize = () => {
+		const { getBaseDimension } = this.context;
 		const {
       width: baseWidth,
 			height: baseHeight,
-    } = this.base.getBoundingClientRect();
-		this.$canvas.width = `${baseWidth * 2}`;
-		this.$canvas.height = `${baseHeight * 2}`;
+    } = getBaseDimension();
+		this.$canvas.width = `${baseWidth * this.dpr}`;
+		this.$canvas.height = `${baseHeight * this.dpr}`;
 		this.setState({
 			dimension: {
 				baseWidth,

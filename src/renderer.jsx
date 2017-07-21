@@ -9,6 +9,7 @@ import Header from 'pages/header';
 import Home from 'pages/home';
 import Profile from 'pages/profile';
 import Canvas from 'components/canvas';
+import 'style';
 export const RootComponent = hub => class extends Component {
   constructor(props) {
     super(props);
@@ -47,9 +48,9 @@ export const RootComponent = hub => class extends Component {
     this.baseDebounced();
   }
   renderLoading() {
-    const { h5, config } = hub;
+    const { config } = hub;
     const { loading = {} } = config;
-    if (h5 && loading.enable) {
+    if (loading.enable) {
       return (
         <Loading ref={l => { this.$loading = l; }} loadingImg={loading.img} />
       );

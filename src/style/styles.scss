@@ -1,0 +1,68 @@
+body {
+	// background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+	// background-repeat: no-repeat;
+	// background-size: 100% 100%;
+	@include background-gradient($shaqingse, $youyanmo);
+	width: 100%;
+	height: 100%;
+	color: $xuese;
+}
+
+* {
+	-webkit-touch-callout: none;
+	-webkit-text-size-adjust: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-user-select: text;
+}
+
+:global {
+	.content {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		padding: 4em 0;
+	}
+	.grid {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 0 3em;
+		perspective: 800px;
+		perspective-origin: 50% 100%;
+	}
+	$namespace: "koya-one";
+	.#{$namespace} *,
+	.#{$namespace} *:before,
+	.#{$namespace} *:after {
+		font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Roboto, Arial, PingFang SC, Hiragino Sans GB, Microsoft Yahei, Microsoft Jhenghei, sans-serif !important;
+		font-weight: 500;
+		box-sizing: border-box;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		font-size: 100%;
+		font-variant-ligatures: none; // text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+		text-rendering: optimizeLegibility;
+		font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		-webkit-text-size-adjust: 100%;
+		-webkit-font-variant-ligatures: none;
+		-ms-overflow-style: none;
+	}
+	.#{$namespace} {
+		position: relative;
+		width: 100%;
+		min-height: 100vh;
+		.toasts {
+			position: absolute;
+			left: 50%;
+			top: 10px;
+			transform: translateX(-50%);
+			z-index: 9999999;
+			text-align: center;
+		}
+	}
+}
