@@ -91,10 +91,8 @@
 }
 
 @mixin keyframes($animation-name) {
-	:global {
-		@keyframes #{$animation-name} {
-			@content;
-		}
+	@keyframes #{$animation-name} {
+		@content;
 	}
 }
 

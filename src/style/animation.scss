@@ -9,7 +9,16 @@
 		@include opacity(1);
 	}
 }
-
+@keyframes scale-out {
+	0% {
+		@include scale(1, 1);
+	}
+	100% {
+		opacity: 0;
+		visibility: hidden;
+		@include scale(1.3, 1.3);
+	}
+}
 @include keyframes(fadeOutRight) {
 	0% {
 		@include opacity(0);
