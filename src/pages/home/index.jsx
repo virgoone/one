@@ -10,7 +10,7 @@ export default class Home extends Component {
 	render() {
 		return (
 			<div className={styles.home}>
-				<div className='content'>
+			<div className='content'>
 					<div className="grid">
 						<HamalFx>
 							<img class="stack__img" src="https://tympanus.net/Development/StackMotionHoverEffects/img/1.png" alt="Image" />
@@ -51,7 +51,7 @@ export default class Home extends Component {
 					</div>
 				</div>
 
-			</div>
+			</div >
 		);
 	}
 }

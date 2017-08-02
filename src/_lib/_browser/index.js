@@ -1,4 +1,4 @@
-import detector from 'detector';
+import UA from 'ua-device';
 import h5 from './h5';
 import injectTapEventPlugin from './TapEventPlugin';
 
@@ -9,5 +9,5 @@ image.onload = image.onerror = () => {
 };
 image.src = 'data:image/webp;base64,UklGRiYAAABXRUJQVlA4IBoAAAAwAQCdASoBAAEAAAAMJaQAA3AA/v89WAAAAA==';
 
-export default detector;
+export default new UA(navigator.userAgent);
 export { webpSupport, injectTapEventPlugin, h5 };

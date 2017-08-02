@@ -21,7 +21,7 @@ export default class Loading extends Component {
   componentDidMount() {
     this.timer = setTimeout(() => {
       this.loaded();
-    }, 3000);
+    }, 600);
   }
   loaded = () => {
     clearTimeout(this.timer);

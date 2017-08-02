@@ -52,8 +52,6 @@ h5.init = () => {
 	}
 
 	docEl.setAttribute('data-dpr', dpr);
-	docEl.style.width = '100%';
-	docEl.style.height = '100%';
 	if (!metaEl) {
 		metaEl = doc.createElement('meta');
 		metaEl.setAttribute('name', 'viewport');

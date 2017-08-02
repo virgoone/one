@@ -10,7 +10,7 @@ export default class Header extends Component {
 	render() {
 		return (
 			<header className={styles.header}>
-				<h1>Preact App start kit</h1>
+				<Link className={styles.logo} href="/"/>
 				<nav>
 					<Link href="/">Home</Link>
 					<Link href="/profile">Me</Link>

@@ -66,7 +66,6 @@
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.0",
     "debug": "^2.6.8",
-    "detector": "^2.5.0",
     "eslint": "^4.2.0",
     "eslint-plugin-jest": "^20.0.0",
     "eslint-plugin-react": "^7.0.0",
@@ -103,6 +102,7 @@
     "preact": "^8.2.1",
     "preact-render-to-string": "^3.6.0",
     "preact-router": "^2.5.5",
-    "serve": "^6.0.2"
+    "serve": "^6.0.2",
+    "ua-device": "^0.1.10"
   }
 }

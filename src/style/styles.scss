@@ -1,11 +1,9 @@
 body {
 	// background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
 	// background-repeat: no-repeat;
-	// background-size: 100% 100%;
-	@include background-gradient($shaqingse, $youyanmo);
-	width: 100%;
-	height: 100%;
-	color: $xuese;
+	// background-size: 100% 100%
+	color: $yuanqing;
+	touch-action: manipulation;
 }
 
 * {
@@ -16,6 +14,9 @@ body {
 }
 
 :global {
+	body {
+		@include background-gradient($qianxueya, $xuese);
+	}
 	.content {
 		position: relative;
 		display: flex;
@@ -54,10 +55,8 @@ body {
 	}
 	.#{$namespace} {
 		position: relative;
-		width: 100%;
-		min-height: 100vh;
 		.toasts {
-			position: absolute;
+			position: fixed;
 			left: 50%;
 			top: 10px;
 			transform: translateX(-50%);

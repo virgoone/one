@@ -8,7 +8,6 @@ import { Router } from 'lib/router';
 import Header from 'pages/header';
 import Home from 'pages/home';
 import Profile from 'pages/profile';
-import Canvas from 'components/canvas';
 import 'style';
 export const RootComponent = hub => class extends Component {
   constructor(props) {
@@ -66,7 +65,6 @@ export const RootComponent = hub => class extends Component {
   render() {
     return (
       <div className='koya-one' id={hub.rootId}>
-        <Canvas />
         <Header />
         <Router onChange={this.handleRoute}>
           <Home path="/" />
