@@ -1,8 +1,8 @@
+@import 'flex.mixins';
 @mixin css3-prefix($property, $value) {
 	-webkit-#{$property}: #{$value};
 	-moz-#{$property}: #{$value};
 	-ms-#{$property}: #{$value};
-	-o-#{$property}: #{$value};
 	#{$property}: #{$value};
 }
 
@@ -91,18 +91,6 @@
 }
 
 @mixin keyframes($animation-name) {
-	@-webkit-keyframes #{$animation-name} {
-		@content;
-	}
-	@-moz-keyframes #{$animation-name} {
-		@content;
-	}
-	@-ms-keyframes #{$animation-name} {
-		@content;
-	}
-	@-o-keyframes #{$animation-name} {
-		@content;
-	}
 	@keyframes #{$animation-name} {
 		@content;
 	}
@@ -118,7 +106,7 @@
 	background-image: -moz-linear-gradient(top, $startColor, $endColor);
 	background-image: -ms-linear-gradient(top, $startColor, $endColor);
 	background-image: -o-linear-gradient(top, $startColor, $endColor);
-	background-image: linear-gradient(top, $startColor, $endColor);
+	background-image: linear-gradient(to top, $startColor, $endColor);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
 }
 
@@ -169,15 +157,19 @@
 /// @param {*} $str - name duration timing-function delay iteration-count direction fill-mode play-state ([http://www.w3schools.com/cssref/css3_pr_animation.asp](http://www.w3schools.com/cssref/css3_pr_animation.asp))
 /// @require {mixin} css3-prefix
 @mixin animation($str) {
-	@include css3-prefix( 'animation', $str);
+	:global {
+		@include css3-prefix( 'animation', $str);
+	}
+}
+
+@mixin animation-name($str) {
+	:global {
+		@include css3-prefix( 'animation-name', $str);
+	}
 }
 
 //clearfix
 @mixin clearfix {
-	&::before {
-		content: " ";
-		display: table;
-	}
 	&::after {
 		content: "";
 		display: table;
@@ -317,4 +309,54 @@
 		transform: translateZ(0);
 		overflow: hidden;
 	}
+}
+
+@mixin fadeInRight($duration:1000ms, $delay :0s) {
+	@include animation(fadeInRight ease-out $duration $delay both)
+}
+
+@mixin fadeOutRight($duration:1000ms, $delay :0s) {
+	@include animation(fadeOutRight ease-out $duration $delay both)
+}
+
+@mixin fadeIn($duration:2000ms, $delay: 0s) {
+	@include animation(fadeIn $duration $delay both);
+}
+
+@mixin pulse($duration:500ms) {
+	@include animation(pulse $duration)
+}
+
+@mixin flip($duration:4000ms) {
+	@include animation(flip $duration)
+}
+
+@mixin hongbao-flip($duration:2000ms, $mode:'both', $timing:'cubic-bezier(0.25, 0.1, 0.01, 0.96)') {
+	@include animation(hongbao-flip $duration $mode $timing)
+}
+
+@mixin breathe($duration:1000ms) {
+	@include animation(breathe $duration alternate ease-in-out infinite)
+}
+
+@mixin bounce($duration:1000ms) {
+	@include animation(bounce $duration alternate infinite)
+}
+
+@mixin blade($duration:1.6s) {
+	@include animation(blade $duration infinite)
+}
+
+@mixin swing($duration:1.6s) {
+	@include animation(swing $duration both infinite);
+	@include transform-origin(center);
+}
+
+%title {
+	font-weight: 400;
+	line-height: 1.5;
+	display: -webkit-box;
+	white-space: normal;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 }

@@ -3,7 +3,6 @@
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import autoprefixer from 'autoprefixer';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ReplacePlugin from 'replace-bundle-webpack-plugin';
 import OfflinePlugin from 'offline-plugin';
@@ -29,7 +28,7 @@ Object.assign(initConfig, {
 	name,
 });
 
-const CSS_MAPS = ENV !== 'production';
+const CSS_MAPS = false;
 
 module.exports = {
 	context: path.resolve(__dirname, 'src'),
@@ -39,20 +38,23 @@ module.exports = {
 		path: path.resolve(__dirname, 'build'),
 		publicPath: '/',
 		filename: 'bundle.js',
+		chunkFilename: '[name].[chunkhash].chunk.js',
 	},
 
 	resolve: {
-		extensions: ['.jsx', '.js', '.json', '.scss'],
+		extensions: ['.jsx', '.js', '.json', '.scss', '.css'],
 		modules: [
 			path.resolve(__dirname, 'src/lib'),
 			path.resolve(__dirname, 'node_modules'),
 			'node_modules',
 		],
 		alias: {
-			components: path.resolve(__dirname, 'src/components'), // used for tests
-			style: path.resolve(__dirname, 'src/style'),
-			lib: path.resolve(__dirname, 'src/_lib'),
-			src: path.resolve(__dirname, 'src'),
+			'components': path.resolve(__dirname, 'src/components'), // used for tests
+			'pages': path.resolve(__dirname, 'src/pages'),
+			'style': path.resolve(__dirname, 'src/style'),
+			'lib': path.resolve(__dirname, 'src/_lib'),
+			'src': path.resolve(__dirname, 'src'),
+			'preact': path.resolve(__dirname + '/node_modules', 'preact/dist/preact.js'),
 		},
 	},
 
@@ -71,19 +73,19 @@ module.exports = {
 			{
 				// Transform our own .(less|css) files with PostCSS and CSS-modules
 				test: /\.(scss|css)$/,
-				include: [path.resolve(__dirname, 'src/components')],
+				include: [path.resolve(__dirname, 'src')],
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [{
 							loader: 'css-loader',
-							options: { modules: true, sourceMap: CSS_MAPS, importLoaders: 1, localIdentName: '[local]__[hash:base64:5]' },
+							options: { modules: true, minimize: ENV === 'production', sourceMap: CSS_MAPS, importLoaders: 2, localIdentName: '[local]__[hash:base64:5]' },
 						},
 						{
 							loader: 'postcss-loader',
 							options: {
 								sourceMap: CSS_MAPS,
-								plugins: () => {
-									autoprefixer({ browsers: ['last 2 versions'] });
+								config: {
+									path: __dirname + '/postcss.config.js',
 								},
 							},
 						},
@@ -96,19 +98,19 @@ module.exports = {
 			},
 			{
 				test: /\.(scss|css)$/,
-				exclude: [path.resolve(__dirname, 'src/components')],
+				exclude: [path.resolve(__dirname, 'src')],
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [{
 							loader: 'css-loader',
-							options: { sourceMap: CSS_MAPS, importLoaders: 1 },
+							options: { sourceMap: CSS_MAPS },
 						},
 						{
 							loader: 'postcss-loader',
 							options: {
 								sourceMap: CSS_MAPS,
-								plugins: () => {
-									autoprefixer({ browsers: ['last 2 versions'] });
+								config: {
+									path: __dirname + '/postcss.config.js',
 								},
 							},
 						},
@@ -149,7 +151,10 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: './index.ejs',
-			minify: { collapseWhitespace: true },
+			minify: {
+				collapseWhitespace: true,
+				removeComments: true,
+			},
 		}),
 		new CopyWebpackPlugin([
 			{ from: './manifest.json', to: './' },
@@ -219,15 +224,15 @@ module.exports = {
 		setImmediate: false,
 	},
 
-	devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
+	devtool: 'false',
 
 	devServer: {
 		port: process.env.PORT || 8080,
-		host: 'localhost',
+		host: '0.0.0.0',
 		publicPath: '/',
 		contentBase: './src',
 		historyApiFallback: true,
-		open: true,
+		disableHostCheck: true,
 		proxy: {
 			// OPTIONAL: proxy configuration:
 			// '/optional-prefix/**': { // path pattern to rewrite

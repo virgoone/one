@@ -2,20 +2,47 @@
 * theme color
 */
 
-$red: #F00;
-$blue: #00F;
-$white: #FFF;
-$gray: #999;
-$black: #000;
+//浅血牙
+$qianxueya:#eacdd1;
+//绛紫
+$jiangzi:#704d4e;
+//元青
+$yuanqing:#3e3c3d;
+//钴蓝
+$gulan:#6493af;
+//雪色
+$xuese:#fffafa;
+//鹦鹉绿
+$yingwulv:#008e59;
+//银朱色
+$yinzhuse:#dd3b44;
+//洋红
+$yanghong:#dc143c;
+//宝蓝
+$baolan:#1f3696;
+//深竹月
+$shenzhuyue:#2578b5;
+//沙青色
+$shaqingse:#2b5e7d;
+//油烟墨
+$youyanmo:#3f3f3c;
+//藤黄
+$tenghuang:#f2de76;
+//库金
+$kujin:#85794f;
+//芦灰
+$luhui:#a9b08f;
 
 /**
 * toadst color
 */
 
-$success: #009688;
-$error:#e91e63;
-$info:#673ab7;
-$warn:#ff5722;
+$success: $yingwulv;
+$error:$yanghong;
+$info:$baolan;
+$warn:$yinzhuse;
+// 复值
+$white:$xuese;
 
 /**
 * breathe shadow var

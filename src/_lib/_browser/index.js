@@ -1,19 +1,13 @@
-export const ua = navigator.userAgent.toLowerCase();
+import UA from 'ua-device';
+import h5 from './h5';
+import injectTapEventPlugin from './TapEventPlugin';
 
-const MOBILE_REGEXP = /android|ios|iphone|ipad|ipod|mobile|blackberry/;
+let image = new Image();
+let webpSupport = false;
+image.onload = image.onerror = () => {
+	webpSupport = image.height === 1;
+};
+image.src = 'data:image/webp;base64,UklGRiYAAABXRUJQVlA4IBoAAAAwAQCdASoBAAEAAAAMJaQAA3AA/v89WAAAAA==';
 
-const ie = ua.indexOf('msie') !== -1 && parseInt(ua.split('msie')[1]);
-
-export const notSupport = ie && ie < 9 || /blackberry/.test(ua);
-
-export const isModern = !ie || ie > 9;
-
-export const isMobile = MOBILE_REGEXP.test(ua);
-
-const WECHAT_EXGEXP = /micromessenger/;
-
-export const isWeChat = WECHAT_EXGEXP.test(ua);
-
-const FIREFOX_EXGEXP = /firefox/;
-
-export const isFireFox = FIREFOX_EXGEXP.test(ua);
+export default new UA(navigator.userAgent);
+export { webpSupport, injectTapEventPlugin, h5 };

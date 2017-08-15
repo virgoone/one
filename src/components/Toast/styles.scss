@@ -1,0 +1,82 @@
+@import '~style/variables';
+@import '~style/mixins';
+@include keyframes(toast_enter) {
+	0% {
+		@include opacity(0);
+		@include translate( 0, -100%);
+	}
+	100% {
+		@include translate(0%, 0);
+		@include opacity(1);
+	}
+}
+
+@include keyframes(toast_leave) {
+	0% {
+		@include opacity(1);
+		@include translate(0, 0);
+	}
+	100% {
+		@include translate( 0, -100%);
+		@include opacity(0);
+	}
+}
+
+:local {
+	.toastWrapper {
+		display: block;
+		text-align: center;
+		pointer-events: auto;
+		.toastRoot {
+			color: white;
+			display: inline-block;
+			cursor: pointer;
+			width: auto;
+			padding: 8px 10px;
+			margin: 5px;
+			line-height: 20px;
+			text-align: left;
+			margin: 5px;
+			font-size: 13px;
+			font-weight: normal;
+			border-radius: 3px;
+			@include animation(toast_enter ease-in-out);
+			box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2), 0 1px 4px rgba(0, 0, 0, 0.3);
+		}
+		.enter {
+		}
+		.leave {
+			@include animation( toast_leave ease-in-out both);
+		}
+		.success {
+			background-color: $success;
+		}
+		.warn {
+			background-color: $warn;
+		}
+		.info {
+			background-color: $info;
+		}
+		.error {
+			background-color: $error;
+		}
+	}
+}
+
+:global {
+	.toasts {
+		&.h5 {
+			:local {
+				.toastWrapper {
+					.toastRoot {
+						padding: 0.19rem 0.38rem;
+						line-height: 1.2;
+						font-size: 0.28rem;
+						margin: 0.1rem;
+						border-radius: 0.09rem;
+					}
+				}
+			}
+		}
+	}
+}

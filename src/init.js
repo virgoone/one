@@ -8,6 +8,7 @@ import * as polyfills from 'lib/_polyfills';
 import * as decorator from 'lib/_decorator';
 import * as storage from 'lib/_storage';
 import * as browser from 'lib/_browser';
+import * as helper from 'lib/_helper';
 
 if (!window.__ONE_LIB__) {
 	const isDebug = config.debug;
@@ -19,6 +20,7 @@ if (!window.__ONE_LIB__) {
       config: { ...config, debug: isDebug },
 			preact,
 			debug,
+			helper,
 			polyfills,
 			storage,
 			decorator,
@@ -35,5 +37,5 @@ export default (name, log = true) => {
 
 	const { version, date } = config;
 
-	console.log(`%c🚀 One Hub ${name.toUpperCase()}@${version} 🚀start at ${new Date(date).toLocaleString()}`, "font-family:'futura', helvetica;font-size:18px;");
+	console.log(`%c🚀 One Hub ${name}@${version} 🚀start at ${new Date(date).toLocaleString()}`, "font-family:'futura', helvetica;font-size:18px;");
 };

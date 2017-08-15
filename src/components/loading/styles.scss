@@ -1,0 +1,30 @@
+@import '~style/helpers';
+
+:local {
+	.loading-root {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background: #fff;
+		@extend %flexbox;
+		@include flex-direction(column);
+		@include flex-just(center);
+		@include align-items(center);
+		bottom: 0;
+		@include transition(opacity .35s ease-in-out);
+		&.in {
+			z-index: 999;
+			opacity: 1;
+			visibility: visible;
+		}
+		&.leave {
+			animation: scale-out .35s ease-in-out both;
+		}
+		.img {
+			max-width: 100%;
+			width: 3rem;
+			display: block;
+		}
+	}
+}
