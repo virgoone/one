@@ -1,0 +1,10 @@
+:local {
+	.liveosLink {
+		display: inline-block;
+		text-decoration: none;
+		user-select: none;
+		&.enable {
+			cursor: pointer;
+		}
+	}
+}

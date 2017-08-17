@@ -1,0 +1,11 @@
+:local {
+	.dragRoot {
+		position: absolute;
+		&.active {
+			cursor: move;
+			>*{
+				pointer-events: none;
+			}
+		}
+	}
+}
