@@ -24,8 +24,8 @@ export default class CountDown extends Component {
     }
   }
   start = (props) => {
-    const { callbackTime, lottery, vote } = props;
-    const clacCount = (lottery || vote) ? 1000 : 1;
+    const { callbackTime, timeStep } = props;
+    const clacCount = (timeStep > 0) ? timeStep : 1;
     this.timer = setInterval(() => {
       let { count } = this.state;
       count -= clacCount;

@@ -1,0 +1,49 @@
+@import '~style/helpers';
+.feed_figure {
+	position: relative;
+	width: 100%;
+	height: 7.73rem;
+	background-color: $xuese;
+	box-shadow: 0px 0px 1px rgba(0, 0, 0, .1);
+	overflow: hidden;
+	.feed_poster {
+		width: 100%;
+		min-height: 7rem;
+	}
+	.feed_figcaption {
+		position: absolute;
+		left: 0px;
+		bottom: 0px;
+		z-index: 2;
+    width: 100%;
+    min-height: 1.42rem;
+		.feed_content {
+			display: flex;
+			padding: 0.3rem 0.1rem;
+			width: 100%;
+			background-color: #fff;
+			align-items: center;
+		}
+		.feed-item {
+			width: 1rem;
+			height: 1rem;
+		}
+		.feed-intro {
+			width: 100%;
+			flex: 1;
+			.title {
+				color: #333333;
+				@include font-dpr(16px);
+				margin-bottom: 0.2rem;
+				@include text-truncate();
+			}
+			.desc {
+				color: #cbcbcb;
+				@include font-dpr(14px);
+			}
+		}
+	}
+	&:not(:last-of-type) {
+		margin-bottom: 0.2rem;
+	}
+}

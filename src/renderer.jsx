@@ -6,7 +6,7 @@ import Loading from 'components/loading';
 import { Router } from 'lib/router';
 
 import Header from 'pages/header';
-import Home from 'pages/home';
+import Feeds from 'pages/Feeds';
 import Profile from 'pages/profile';
 import 'style';
 export const RootComponent = hub => class extends Component {
@@ -67,7 +67,7 @@ export const RootComponent = hub => class extends Component {
       <div className='koya-one' id={hub.rootId}>
         <Header />
         <Router onChange={this.handleRoute}>
-          <Home path="/" />
+          <Feeds path="/" />
           <Profile path="/profile/" user="me" />
           <Profile path="/profile/:user" />
         </Router>

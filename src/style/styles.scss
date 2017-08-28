@@ -17,6 +17,10 @@ body {
 	body {
 		@include background-gradient($qianxueya, $xuese);
 	}
+	figure,
+	p {
+		margin: 0;
+	}
 	.content {
 		position: relative;
 		display: flex;
@@ -55,6 +59,7 @@ body {
 	}
 	.#{$namespace} {
 		position: relative;
+		min-height: 100vh;
 		.toasts {
 			position: fixed;
 			left: 50%;
